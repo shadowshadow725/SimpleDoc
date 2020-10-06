@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Stepper, Step, StepLabel } from "@material-ui/core";
 
 import MultipleChoiceQuestion from "../Components/MultipleChoiceQuestion";
 import SimpleDocRest from "../api/SimpleDocRest";
@@ -14,6 +15,7 @@ class QuizView extends React.Component {
   fetchQuiz = async () => {
     SimpleDocRest.get(`/quizzes/1/`)
       .then((result) => {
+        console.log(result);
         this.setState({
           quizTitle: result.data.title,
           quizQuestions: result.data.quizquestion_set,
@@ -31,7 +33,7 @@ class QuizView extends React.Component {
   render() {
     const { quizQuestions, quizId } = this.state;
     return (
-      <div>
+      <div key={quizId}>
         {quizQuestions.map(({ question, quizoption_set, id }) => (
           <MultipleChoiceQuestion
             key={id}
