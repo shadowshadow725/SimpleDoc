@@ -143,6 +143,10 @@ class ContributionForm extends React.Component {
       // , marginInlineStart: "33.5ch"  , marginInlineStart: "50ch" ,width: 80ch
       <div>
         <form noValidate autoComplete="off" onSubmit={this.handleOnSubmit.bind(this)} >
+          <div>
+            <h1>Contribute to our documentation!</h1>
+            <TextComponent text="INSTRUCTIONS: After filling our your personal info, select a concept and think of a topic relevant to the concept. For example, Linked lists could be the selected concept and the topic could be linked list insertion. Add the name of your topic into the 'Title' field. After that, list all definitions relevant to the topic and then add an explanation of your topic tailored to first year students. Finally, add three examples consisting of code and relevant descriptions. By submitting, you are giving us permission to edit and publish the documentation to the site in case of acceptance however, you retain full intellectual property rights to your submission. *- indicates the field is REQUIRED" />
+          </div>
           <h2 style={{ marginTop: "30px", marginInlineStart: "3ch" }}>
             Personal Information
                     </h2>
