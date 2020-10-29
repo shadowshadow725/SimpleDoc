@@ -9,15 +9,16 @@ import ContributionForm from '../Components/ContributionForm'
 
 class ContributionPage extends React.Component {
 
-    render(){
+    render() {
         return (
             <div>
-                <ButtonAppBar />
-                <ContributionForm style={{width: "70ch"}}/>
+                {/* <ButtonAppBar /> */}
+                <ContributionForm style={{ width: "70ch" }} />
+                <br></br>
             </div>
         );
     }
-    
+
 }
 
 export default ContributionPage
