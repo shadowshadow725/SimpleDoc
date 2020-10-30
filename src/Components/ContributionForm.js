@@ -7,8 +7,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import PropTypes from "prop-types";
 import SimpleDocRest from "../api/SimpleDocRest";
 import ListSubheader from '@material-ui/core/ListSubheader';
-
-
+import TextComponent from "./textComponent.js"
 
 class ContributionForm extends React.Component {
   constructor(props) {
@@ -126,12 +125,16 @@ class ContributionForm extends React.Component {
     })
       .then(function (response) {
         console.log(response);
+        alert("Thank you! you're submission has been sent.")
       }).then(function (error) {
         console.log(error);
       });
   };
 
   render() {
+    // console.log(this.state.data)
+    this.state.list108 = []
+    this.state.list148 = []
     for (const concept of this.state.data) {
       if (concept.category == "CSC108") {
         this.state.list108.push(concept)
@@ -141,262 +144,274 @@ class ContributionForm extends React.Component {
     }
     return (
       // , marginInlineStart: "33.5ch"  , marginInlineStart: "50ch" ,width: 80ch
-      <div>
-        <form noValidate autoComplete="off" onSubmit={this.handleOnSubmit.bind(this)} >
-          <div>
-            <h1>Contribute to our documentation!</h1>
-            <TextComponent text="INSTRUCTIONS: After filling our your personal info, select a concept and think of a topic relevant to the concept. For example, Linked lists could be the selected concept and the topic could be linked list insertion. Add the name of your topic into the 'Title' field. After that, list all definitions relevant to the topic and then add an explanation of your topic tailored to first year students. Finally, add three examples consisting of code and relevant descriptions. By submitting, you are giving us permission to edit and publish the documentation to the site in case of acceptance however, you retain full intellectual property rights to your submission. *- indicates the field is REQUIRED" />
-          </div>
-          <h2 style={{ marginTop: "30px", marginInlineStart: "3ch" }}>
-            Personal Information
+      <center>
+        <div>
+          <form noValidate autoComplete="off" onSubmit={this.handleOnSubmit.bind(this)} >
+            <div>
+              <h1>Contribute to our documentation!</h1>
+              <TextComponent text="INSTRUCTIONS: After filling our your personal info, select a concept and think of a topic relevant to the concept. For example, Linked lists could be the selected concept and the topic could be linked list insertion. Add the name of your topic into the 'Title' field. After that, list all definitions relevant to the topic and then add an explanation of your topic tailored to first year students. Finally, add three examples consisting of code and relevant descriptions. By submitting, you are giving us permission to edit and publish the documentation to the site in case of acceptance however, you retain full intellectual property rights to your submission. *- indicates the field is REQUIRED" />
+            </div>
+            <h2 style={{ marginTop: "30px" }}>
+              Personal Information
                     </h2>
-          <div>
-            <TextField //name
-              style={{ width: "40ch", marginTop: "5px", marginInlineStart: "3ch" }}
-              id="name"
-              required
-              label="Name"
-              multiline
-              value={this.state.contributorName}
-              onChange={this.handleOnContributorNameChange.bind(this)}
-              //placeholder="Enter your name"
-              variant="filled"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start" >
-                    <AccountCircle style={{ marginBottom: "14px" }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </div>
-          <div>
-            <TextField //Utorid
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Utorid"
-              multiline
-              value={this.state.contributorUtorid}
-              onChange={this.handleOnContributorUtoridChange.bind(this)}
-              //placeholder="Enter your Utorid"
-              variant="filled"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start" >
-                    <AccountCircle style={{ marginBottom: "14px" }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Student Number"
-              multiline
-              value={this.state.contributorStdNum}
-              onChange={this.handleOnContributorStdNumChange.bind(this)}
-              //placeholder="Enter your student number"
-              variant="filled"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start" >
-                    <AccountCircle style={{ marginBottom: "14px" }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="UofT Email"
-              multiline
-              value={this.state.contributorEmail}
-              onChange={this.handleOnContributorEmailChange.bind(this)}
-              //placeholder="Enter your email (UofT email preferred)"
-              variant="filled"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start" >
-                    <AccountCircle style={{ marginBottom: "14px" }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </div>
-          <h2 style={{ marginTop: "40px", marginInlineStart: "3ch" }}>
-            Create the Documentation
+            <div>
+              <TextField //name
+                style={{ width: "40ch", marginTop: "5px" }}
+                id="name"
+                required
+                label="Name"
+                multiline
+                value={this.state.contributorName}
+                onChange={this.handleOnContributorNameChange.bind(this)}
+                //placeholder="Enter your name"
+                variant="filled"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" >
+                      <AccountCircle style={{ marginBottom: "14px" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+            <div>
+              <TextField //Utorid
+                style={{ width: "40ch", marginTop: "20px" }}
+                id="filled-multiline-static"
+                required
+                label="Utorid"
+                multiline
+                value={this.state.contributorUtorid}
+                onChange={this.handleOnContributorUtoridChange.bind(this)}
+                //placeholder="Enter your Utorid"
+                variant="filled"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" >
+                      <AccountCircle style={{ marginBottom: "14px" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "40ch", marginTop: "20px" }}
+                id="filled-multiline-static"
+                required
+                label="Student Number"
+                multiline
+                value={this.state.contributorStdNum}
+                onChange={this.handleOnContributorStdNumChange.bind(this)}
+                //placeholder="Enter your student number"
+                variant="filled"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" >
+                      <AccountCircle style={{ marginBottom: "14px" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "40ch", marginTop: "20px" }}
+                id="filled-multiline-static"
+                required
+                label="Utoronto Email"
+                multiline
+                value={this.state.contributorEmail}
+                onChange={this.handleOnContributorEmailChange.bind(this)}
+                //placeholder="Enter your email (UofT email preferred)"
+                variant="filled"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start" >
+                      <AccountCircle style={{ marginBottom: "14px" }} />
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+            <h2 style={{ marginTop: "40px" }}>
+              Document Information
                   </h2>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Concept Name"
-              select
-              onChange={this.handleOnConceptChange.bind(this)}
-              value={this.state.conceptname}
+            <div>
+              <TextField
+                style={{ width: "40ch" }}
+                id="filled-multiline-static"
+                required
+                label="Concept Name"
+                select
+                onChange={this.handleOnConceptChange.bind(this)}
+                value={this.state.conceptname}
 
-              helperText="Please select one concept"
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <ListSubheader>CSC108</ListSubheader>
-              {this.state.list108.map((concept) => (
-                <MenuItem key={concept.name} value={concept.name}>
-                  {concept.name}
+                helperText="Please select one concept"
+              >
+                <MenuItem value="">
+                  <em>None</em>
                 </MenuItem>
+                <ListSubheader>CSC108</ListSubheader>
+                {this.state.list108.map((concept) => (
+                  <MenuItem key={concept.name} value={concept.name}>
+                    {concept.name}
+                  </MenuItem>
 
-              ))}
-              <ListSubheader>CSC148</ListSubheader>
-              {this.state.list148.map((concept) => (
-                <MenuItem key={concept.name} value={concept.name}>
-                  {concept.name}
-                </MenuItem>
-              ))}
-            </TextField>
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              //id="filled-multiline-static"
-              required
-              label="Documentation Name"
-              multiline
-              value={this.state.documentname}
-              onChange={this.handleOnDocNameChange.bind(this)}
-              placeholder="Enter the Documentation Name"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Documentation Definition"
-              multiline
-              value={this.state.definition}
-              onChange={this.handleOnDefChange.bind(this)}
-              rows={6}
-              placeholder="Enter the definition"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Documentation Description"
-              multiline
-              value={this.state.description}
-              onChange={this.handleOnDescriptionChange.bind(this)}
-              rows={6}
-              placeholder="Enter the description"
-              variant="filled"
-            />
-          </div>
-          <h2 style={{ marginTop: "40px", marginInlineStart: "3ch" }}>
-            Examples
+                ))}
+                <ListSubheader>CSC148</ListSubheader>
+                {this.state.list148.map((concept) => (
+                  <MenuItem key={concept.name} value={concept.name}>
+                    {concept.name}
+                  </MenuItem>
+                ))}
+              </TextField>
+            </div>
+            <div>
+              <TextField
+                style={{ width: "40ch", marginTop: "20px" }}
+                //id="filled-multiline-static"
+                required
+                label="Documentation Name"
+                multiline
+                value={this.state.documentname}
+                onChange={this.handleOnDocNameChange.bind(this)}
+                placeholder="Enter the Documentation Name"
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "40ch", marginTop: "20px" }}
+                id="filled-multiline-static"
+                required
+                label="Definitions"
+                multiline
+                value={this.state.definition}
+                onChange={this.handleOnDefChange.bind(this)}
+                rows={6}
+                placeholder="e.g. A linked list consists of nodes that..."
+                helperText="Define the main components of the concept."
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "40ch", marginTop: "20px" }}
+                id="filled-multiline-static"
+                required
+                label="Description"
+                multiline
+                value={this.state.description}
+                onChange={this.handleOnDescriptionChange.bind(this)}
+                rows={6}
+                placeholder="e.g. You can insert into a linked list by..."
+                helperText="Explain the topic in a way that can be easily comprehended by first-year students."
+                variant="filled"
+              />
+            </div>
+            <h2 style={{ marginTop: "40px" }}>
+              Example 1
                   </h2>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "5px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Example1 Description"
-              multiline
-              value={this.state.exampleDescription1}
-              onChange={this.handleOnExDescription1.bind(this)}
-              rows={4}
-              placeholder="Please describe example one"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Example1"
-              multiline
-              value={this.state.example1}
-              onChange={this.handleOnEx1.bind(this)}
-              rows={6}
-              placeholder="Enter example one"
-              helperText="Please type in code snippet(with indentation)"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "40px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Example2 Description"
-              multiline
-              value={this.state.exampleDescription2}
-              onChange={this.handleOnExDescription2.bind(this)}
-              rows={4}
-              placeholder="Please describe example two"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              required
-              label="Example2"
-              multiline
-              value={this.state.example2}
-              onChange={this.handleOnEx2.bind(this)}
-              rows={6}
-              placeholder="Enter example two"
-              helperText="Please type in code snippet(with indentation)"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "40px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              label="Example3 Description"
-              multiline
-              value={this.state.exampleDescription3}
-              onChange={this.handleOnExDescription3.bind(this)}
-              rows={4}
-              placeholder="Please describe example three"
-              variant="filled"
-            />
-          </div>
-          <div>
-            <TextField
-              style={{ width: "40ch", marginTop: "20px", marginInlineStart: "3ch" }}
-              id="filled-multiline-static"
-              label="Example3"
-              multiline
-              value={this.state.example3}
-              onChange={this.handleOnEx3.bind(this)}
-              rows={6}
-              placeholder="Enter example three"
-              helperText="Please type in code snippet(with indentation)"
-              variant="filled"
-            />
-          </div>
+            <div>
+              <TextField
+                style={{ width: "40ch", marginTop: "5px" }}
+                id="filled-multiline-static"
+                required
+                label="Description"
+                multiline
+                value={this.state.exampleDescription1}
+                onChange={this.handleOnExDescription1.bind(this)}
+                rows={4}
+                placeholder="e.g. Let n be the first node in the linked list..."
+                helperText="Give an example of how to approach a problem."
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "40ch", marginTop: "20px" }}
+                id="filled-multiline-static"
+                required
+                label="Code Example"
+                multiline
+                value={this.state.example1}
+                onChange={this.handleOnEx1.bind(this)}
+                rows={6}
+                placeholder="This is where any code required for your example would go"
+                helperText="Enter any code snippets here"
+                variant="filled"
+              />
+            </div>
+            <h2 style={{ marginTop: "40px" }}>
+              Example 2
+                  </h2>
+            <div>
+              <TextField
+                style={{ width: "40ch", marginTop: "40px" }}
+                id="filled-multiline-static"
+                required
+                label="Description"
+                multiline
+                value={this.state.exampleDescription2}
+                onChange={this.handleOnExDescription2.bind(this)}
+                rows={4}
+                placeholder="e.g. Let n be the first node in the linked list..."
+                helperText="Give an example of how to approach a problem."
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "40ch", marginTop: "20px" }}
+                id="filled-multiline-static"
+                required
+                label="Code Example"
+                multiline
+                value={this.state.example2}
+                onChange={this.handleOnEx2.bind(this)}
+                rows={6}
+                placeholder="This is where any code required for your example would go"
+                helperText="Enter any code snippets here"
+                variant="filled"
+              />
+            </div>
+            <h2 style={{ marginTop: "40px" }}>
+              Example 3
+                  </h2>
+            <div>
+              <TextField
+                style={{ width: "40ch", marginTop: "40px" }}
+                id="filled-multiline-static"
+                label="Description *"
+                multiline
+                value={this.state.exampleDescription3}
+                onChange={this.handleOnExDescription3.bind(this)}
+                rows={4}
+                placeholder="e.g. Let n be the first node in the linked list..."
+                helperText="Give an example of how to approach a problem."
+                variant="filled"
+              />
+            </div>
+            <div>
+              <TextField
+                style={{ width: "40ch", marginTop: "20px" }}
+                id="filled-multiline-static"
+                label="Code Example *"
+                multiline
+                value={this.state.example3}
+                onChange={this.handleOnEx3.bind(this)}
+                rows={6}
+                placeholder="This is where any code required for your example would go"
+                helperText="Enter any code snippets here"
+                variant="filled"
+              />
+            </div>
 
-          <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
-        </form>
-      </div >
-      //  marginLeft: "50ch", 
+            <Button style={{ marginTop: "30px", marginLeft: "3ch" }} variant="contained" color="primary" type="submit" >Submit</Button>
+          </form>
+        </div >
+      </center>
     );
   }
 

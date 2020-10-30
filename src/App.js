@@ -14,10 +14,10 @@ class App extends React.Component {
       <div>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' component={Login} />
-            <Route exact path='/DocumentView' component={DocumentView} />
-            <Route exact path='/quiz' component={QuizView} />
-            <Route exact path='/ContributionPage' component={ContributionPage} />
+            <Route exact path='/' component={ContributionPage} />
+            {/* <Route exact path='/DocumentView' component={DocumentView} /> */}
+            {/* <Route exact path='/quiz' component={QuizView} /> */}
+            {/* <Route exact path='/ContributionPage' component={ContributionPage} /> */}
 
           </Switch>
         </BrowserRouter>
