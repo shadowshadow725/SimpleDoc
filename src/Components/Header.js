@@ -17,7 +17,7 @@ export default function Header(){
 		>
 		Simple Doc
 		</Typography>
-		<LoginButton style={{textAlign: 'right'}}/>
+		<LoginButton style={{marginLeft:'auto' }}/>
 	</Toolbar>
 	
     )
