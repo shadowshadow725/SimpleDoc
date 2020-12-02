@@ -30,7 +30,7 @@ class DocumentView extends React.Component {
     };
   }
   toQuiz = async (e) => {
-    this.props.history.push("/quiz");
+    this.props.history.push(`/quiz/${this.state.quiz}`);
   };
 
   fetchDoc = async () => {
@@ -113,9 +113,15 @@ class DocumentView extends React.Component {
                   />
                 </div>
               ))}
-              <Button variant="contained" color="primary" onClick={this.toQuiz}>
-                Take a Quiz
-              </Button>
+              {quiz !== null ? (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={this.toQuiz}
+                >
+                  Take a Quiz
+                </Button>
+              ) : null}
             </div>
           )}
         </Container>
